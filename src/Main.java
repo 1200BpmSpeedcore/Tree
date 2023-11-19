@@ -32,9 +32,9 @@ public class Main {
         }
 
         for (int i = 0; i < height - 1; i++) {
-            System.out.println(fillWhitespace.substring(i, height - 1) + "/" + fillWhitespace.substring(0, i * 2) + "\\");
+            System.out.println(fillWhitespace.substring(i, height - 1) + "i/" + fillWhitespace.substring(0, i * 2) + "\\i");
         }
-        System.out.println("/" + fillUnderscore + "\\");
+        System.out.println(" /" + fillUnderscore + "\\");
         System.out.println(fillWhitespace.substring(0, fillUnderscore.length() / 2) + "||");
     }
 
