@@ -1,5 +1,4 @@
 import java.util.Scanner;
-
 public class Main {
     public static void main (String[] args)
     {
@@ -8,7 +7,7 @@ public class Main {
     }
     private static int getHeight() {
         Scanner scan = new Scanner(System.in);
-        System.out.println("Hoehe des Baumes");
+        System.out.println("Höhe der Baumkrone");
         System.out.print(getInputSymbol());
 
         int num = scan.nextInt();
@@ -21,21 +20,32 @@ public class Main {
     }
 
     private static void printTree(int height) {
-        StringBuilder fillWhitespace = new StringBuilder();
-        while(fillWhitespace.length() < (height * 2) - 4) {
-            fillWhitespace.append(" ");
-        }
+        if(height < 0) {
+            System.out.println("FEHLER: die Höhe der Baumkrone kann nicht negativ sein.");
+        } else if(height == 0) {
+            // u0305 --> Unicode 'COMBINING OVERLINE'-Char
+            System.out.println("\u0305");
+            System.out.println("|");
+        } else {
+            // Baumkrone ausgeben
+            StringBuilder fillWhitespace = new StringBuilder();
+            for(int i = 0; i < (height * 2) - 2; i++) {
+                fillWhitespace.append(" ");
+            }
+            for(int i = 0; i < height; i++) {
+                System.out.println(fillWhitespace.substring(i, height - 1) + "i/" + fillWhitespace.substring(0, i * 2) + "\\i");
+            }
 
-        StringBuilder fillUnderscore = new StringBuilder();
-        while(fillUnderscore.length() < (height - 1) * 2) {
-            fillUnderscore.append("_");
-        }
+            // Ende der Baumkrone ausgeben
+            System.out.print(" ");
+            for(int i = 0; i < fillWhitespace.length() + 2; i++) {
+                System.out.print("\u0305");
+            }
+            System.out.println();
 
-        for (int i = 0; i < height - 1; i++) {
-            System.out.println(fillWhitespace.substring(i, height - 1) + "i/" + fillWhitespace.substring(0, i * 2) + "\\i");
+            // Baumstamm ausgeben
+            System.out.println(height == 1 ? " ||" : fillWhitespace.substring(0, height) + "||");
         }
-        System.out.println(" /" + fillUnderscore + "\\");
-        System.out.println(fillWhitespace.substring(0, fillUnderscore.length() / 2) + "||");
     }
 
 }
