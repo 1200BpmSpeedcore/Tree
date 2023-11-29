@@ -1,17 +1,25 @@
-import java.util.Scanner;
-public class Main {
+// import java.util.Scanner;
+
+import ea.Kon;
+
+public class Lichtbaum {
+
     public static void main (String[] args)
     {
         int height = getHeight();
         printTree(height);
     }
     private static int getHeight() {
-        Scanner scan = new Scanner(System.in);
+        /*Scanner scan = new Scanner(System.in);
         System.out.println("Höhe der Baumkrone");
         System.out.print(getInputSymbol());
 
         int num = scan.nextInt();
-        scan.close();
+
+        scan.close();*/
+
+        System.out.println("Höhe der Baumkrone");
+        int num = ea.Kon.iEingabe();
         return num;
     }
 
@@ -20,11 +28,10 @@ public class Main {
     }
 
     private static void printTree(int height) {
-        if(height < 0) {
-            System.out.println("FEHLER: die Höhe der Baumkrone kann nicht negativ sein.");
+        if(height < 0 || height > 31) {
+            System.out.println("FEHLER: die Höhe der Baumkrone kann nicht negativ oder\n\tgrößer als 31 sein.");
         } else if(height == 0) {
-            // u0305 --> Unicode 'COMBINING OVERLINE'-Char
-            System.out.println("\u0305");
+            System.out.println("-");
             System.out.println("|");
         } else {
             // Baumkrone ausgeben
@@ -39,7 +46,7 @@ public class Main {
             // Ende der Baumkrone ausgeben
             System.out.print(" ");
             for(int i = 0; i < fillWhitespace.length() + 2; i++) {
-                System.out.print("\u0305");
+                System.out.print("-");
             }
             System.out.println();
 
